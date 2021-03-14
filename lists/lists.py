@@ -74,7 +74,7 @@ print(myList)
 # print(myList)
 
 # create a list with same element
-myNewList = [0]*5
+myNewList = [0] * 5
 print(myNewList)
 
 # concatenate
