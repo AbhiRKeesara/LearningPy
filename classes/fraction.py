@@ -1,3 +1,6 @@
+# standard operators -> https://docs.python.org/3/library/operator.html
+
+
 def gcd(num1, num2):
     while num1 % num2 != 0:
         num1, num2 = num2, num1 % num2
