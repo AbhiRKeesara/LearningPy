@@ -8,7 +8,6 @@ def gcd(num1, num2):
 
 
 class Fraction:
-
     def __init__(self, top, bottom):
         self.num = top
         self.den = bottom
@@ -17,15 +16,13 @@ class Fraction:
         return f"{self.num}/{self.den}"
 
     def __add__(self, other_fraction):
-        new_num = self.num * other_fraction.den + \
-            self.den * other_fraction.num
+        new_num = self.num * other_fraction.den + self.den * other_fraction.num
         new_den = self.den * other_fraction.den
         common = gcd(new_num, new_den)
         return Fraction(new_num // common, new_den // common)
 
     def __sub__(self, other_fraction):
-        new_num = self.num * other_fraction.den - \
-            self.den * other_fraction.num
+        new_num = self.num * other_fraction.den - self.den * other_fraction.num
         new_den = self.den * other_fraction.den
         common = gcd(new_num, new_den)
         return Fraction(new_num // common, new_den // common)
@@ -52,14 +49,14 @@ class Fraction:
         new_num = self.num * other_fraction.num
         new_den = self.den * other_fraction.den
         common = gcd(new_num, new_den)
-        return Fraction(new_num//common, new_den // common)
+        return Fraction(new_num // common, new_den // common)
 
     def __truediv__(self, other_fraction):
         new_num = self.num * other_fraction.den
         new_den = self.den * other_fraction.num
         common = gcd(new_num, new_den)
 
-        return Fraction(new_num//common, new_den // common)
+        return Fraction(new_num // common, new_den // common)
 
 
 f1 = Fraction(1, 4)
@@ -73,7 +70,7 @@ print(f1 == f2)
 
 print(f1 * f2)
 
-print(f1/f2)
+print(f1 / f2)
 
 print(f1 < f2)
 print(f1 > f2)
