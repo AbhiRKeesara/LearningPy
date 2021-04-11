@@ -30,22 +30,16 @@ class BinaryGate(LogicGate):
     def get_pin_a(self):
         if self.pin_a == None:
             return int(
-                input(
-                    f"Enter pin A input for gate \
-                {self.get_label()}: "
-                )
-            )
+                input(f"Enter pin A input for gate \
+                {self.get_label()}: "))
         else:
             return self.pin_a.get_from().get_output()
 
     def get_pin_b(self):
         if self.pin_b == None:
             return int(
-                input(
-                    f"Enter pin B input for gate \
-                {self.get_label()}: "
-                )
-            )
+                input(f"Enter pin B input for gate \
+                {self.get_label()}: "))
         else:
             return self.pin_b.get_from().get_output()
 
@@ -69,11 +63,8 @@ class UnaryGate(LogicGate):
     def get_pin(self):
         if self.pin == None:
             return int(
-                input(
-                    f"Enter pin  input for gate \
-                {self.get_label()}: "
-                )
-            )
+                input(f"Enter pin  input for gate \
+                {self.get_label()}: "))
         else:
             return self.pin.get_from().get_output()
 
