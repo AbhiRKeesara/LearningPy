@@ -5,8 +5,8 @@
 # Classes can be organized into hierarchies.
 # A class constructor should always invoke the constructor of its parent before continuing on with its own data and behavior.
 
-class LogicGate:
 
+class LogicGate:
     def __init__(self, lbl):
         self.name = lbl
         self.output = None
@@ -29,15 +29,23 @@ class BinaryGate(LogicGate):
 
     def get_pin_a(self):
         if self.pin_a == None:
-            return int(input(f"Enter pin A input for gate \
-                {self.get_label()}: "))
+            return int(
+                input(
+                    f"Enter pin A input for gate \
+                {self.get_label()}: "
+                )
+            )
         else:
             return self.pin_a.get_from().get_output()
 
     def get_pin_b(self):
         if self.pin_b == None:
-            return int(input(f"Enter pin B input for gate \
-                {self.get_label()}: "))
+            return int(
+                input(
+                    f"Enter pin B input for gate \
+                {self.get_label()}: "
+                )
+            )
         else:
             return self.pin_b.get_from().get_output()
 
@@ -60,8 +68,12 @@ class UnaryGate(LogicGate):
 
     def get_pin(self):
         if self.pin == None:
-            return int(input(f"Enter pin  input for gate \
-                {self.get_label()}: "))
+            return int(
+                input(
+                    f"Enter pin  input for gate \
+                {self.get_label()}: "
+                )
+            )
         else:
             return self.pin.get_from().get_output()
 
@@ -129,7 +141,7 @@ class NandGate(AndGate):
             return 1
 
 
-class Connector():
+class Connector:
     def __init__(self, fgate, tgate):
         self.from_gate = fgate
         self.to_gate = tgate
