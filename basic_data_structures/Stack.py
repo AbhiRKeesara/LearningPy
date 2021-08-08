@@ -125,3 +125,73 @@ def base_converter(decimal_num, base):
 # print(base_converter(25, 16))
 # print(base_converter(256, 16))
 # print(base_converter(26, 26))
+
+
+def convert_infix_to_postfix(infix_expression):
+    precedence_dict = {}
+    precedence_dict["^"] = 4
+    precedence_dict["*"] = 3
+    precedence_dict["/"] = 3
+    precedence_dict["+"] = 2
+    precedence_dict["-"] = 2
+    precedence_dict["("] = 1
+
+    op_stack = Stack()
+
+    postfix_list = []
+    token_list = infix_expression.split()
+
+    for token in token_list:
+        if token in "ABCDEFGHIJKLMNOPQRSTUVXYZ" or token in "0123456789":
+            postfix_list.append(token)
+        elif token == "(":
+            op_stack.push(token)
+        elif token == ")":
+            top_token = op_stack.pop()
+            while top_token != "(":
+                postfix_list.append(top_token)
+                top_token = op_stack.pop()
+        else:
+            while (not op_stack.is_empty()) and (
+                precedence_dict[op_stack.peek()] >= precedence_dict[token]
+            ):
+                postfix_list.append(op_stack.pop())
+            op_stack.push(token)
+    while not op_stack.is_empty():
+        postfix_list.append(op_stack.pop())
+
+    return " ".join(postfix_list)
+
+
+# print(convert_infix_to_postfix("A * B + C * D"))
+# print(convert_infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
+# print(convert_infix_to_postfix("5 * 3 ^ ( 4 - 2 )"))
+
+
+def postfix_evaluation(postfix_expression):
+    operand_stack = Stack()
+    token_list = postfix_expression.split()
+
+    for token in token_list:
+        if token in "0123456789":
+            operand_stack.push(int(token))
+        else:
+            operator2 = operand_stack.pop()
+            operator1 = operand_stack.pop()
+            result = do_math(token, operator1, operator2)
+            operand_stack.push(result)
+    return operand_stack.pop()
+
+
+def do_math(operator, operator1, operator2):
+    if operator == "*":
+        return operator1 * operator2
+    elif operator == "/":
+        return operator1 / operator2
+    elif operator == "+":
+        return operator1 + operator2
+    else:
+        return operator1 - operator2
+
+
+# print(postfix_evaluation("7 8 + 3 2 + /"))
