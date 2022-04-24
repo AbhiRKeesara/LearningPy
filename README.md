@@ -1,6 +1,6 @@
-# LearningPy
+# Learning Algorithms and Data Structures with Python
 
-#### This repo is used to save code related to my learning in python
+## This repo is used to save my code while learning and problem solving of Algorithms and Data Structures with Python
 
 ### Setup
 
